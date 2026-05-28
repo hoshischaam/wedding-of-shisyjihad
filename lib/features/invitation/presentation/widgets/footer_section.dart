@@ -94,7 +94,7 @@ class _FooterSectionState extends State<FooterSection> {
                   const SizedBox(height: 40),
                   
                   Text(
-                    "© 2026 by Beloved Brothers",
+                    "© 2026 by Beloved Brother",
                     style: AppStyles.bodyStyle.copyWith(
                       fontSize: 10,
                       color: AppColors.primaryText.withOpacity(0.4),

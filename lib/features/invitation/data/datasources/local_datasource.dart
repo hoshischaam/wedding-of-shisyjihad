@@ -6,9 +6,9 @@ class LocalDataSource {
   Future<InvitationModel> getInvitation() async {
     return InvitationModel(
       groomName: "Jihad",
-      brideName: "Sissy",
-      groomFullName: "Moh. Jihad, S.T.",
-      brideFullName: "Sissy Hisanah, S.Pd.",
+      brideName: "Shisy",
+      groomFullName: "Muhammad Jihad",
+      brideFullName: "Syahshiyah Safa",
       eventDate: "Minggu, 12 Desember 2026",
       akadTime: "09:00 - 10:00 WIB",
       resepsiTime: "10:00 - Selesai WIB",
@@ -51,11 +51,11 @@ class LocalDataSource {
         )
       ],
       banks: [
-        BankDetails(bank: "BANK MANDIRI", name: "MOH. JIHAD", number: "210002114"),
-        BankDetails(bank: "BANK MANDIRI", name: "SISSY HISANAH", number: "210002136"),
+        BankDetails(bank: "BANK MANDIRI", name: "Muhammad JIHAD", number: "210002114"),
+        BankDetails(bank: "BANK MANDIRI", name: "Syahshiyah Safa", number: "210002136"),
       ],
       giftAddress: " Majsid MHT JL. Damai RT 03 RW 05, Petukangan Selatan, Pesanggrahan, Jakarta Selatan",
-      giftReceiver: "Sissy Hisanah",
+      giftReceiver: "Shisy",
       dummyWishes: [
         Wish(name: "Aku", date: "24 Oktober 2025 | 10:07", message: "Selamat menempuh hidup baru ya!"),
         Wish(name: "Abdul Seo", date: "24 November 2024 | 21:21", message: "Selamat ya kak"),

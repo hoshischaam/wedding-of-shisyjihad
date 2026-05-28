@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Laili & Yunus</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&family=Amiri&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #b38e44;
+            --gold-light: #d4af37;
+            --bg: #fdfaf5;
+            --neutral-cover: #f4f1ea;
+            --text-dark: #2c2c2c;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background: var(--bg); 
+            color: var(--text-dark); 
+            overflow-x: hidden;
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            line-height: 1.6;
+        }
+
+        /* --- COVER --- */
+        #cover {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: var(--neutral-cover);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: var(--text-dark); z-index: 9999; text-align: center; transition: 1.2s cubic-bezier(0.7, 0, 0.3, 1);
+            border: 20px solid white;
+        }
+        #cover::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.02) 100%);
+        }
+        #cover.hidden { transform: translateY(-100%); visibility: hidden; }
+        
+        .c-name { font-family: 'Great Vibes', cursive; font-size: 4.5rem; margin: 15px 0; color: var(--gold); text-shadow: 1px 1px 1px rgba(0,0,0,0.05); }
+        
+        .btn-open { 
+            position: relative; padding: 14px 40px; background: var(--gold); color: white; border: none; 
+            border-radius: 30px; cursor: pointer; font-weight: 600; margin-top: 30px;
+            box-shadow: 0 10px 20px rgba(179, 142, 68, 0.2);
+            transition: 0.4s; letter-spacing: 1px;
+        }
+        .btn-open:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(179, 142, 68, 0.3); }
+
+        #main-content { display: none; position: relative; }
+        section { padding: 100px 25px; text-align: center; max-width: 850px; margin: 0 auto; }
+
+        .arabic { font-family: 'Amiri', serif; font-size: 2.2rem; color: var(--gold); line-height: 2.2; margin-bottom: 25px; }
+        
+        .mempelai-img { 
+            width: 200px; height: 200px; border-radius: 50%; object-fit: cover; 
+            border: 8px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            margin-bottom: 20px; transition: 0.5s;
+        }
+        .mempelai-box h3 { font-family: 'Great Vibes', cursive; font-size: 3rem; color: var(--gold); margin-bottom: 5px; }
+        .mempelai-box b { color: var(--gold); }
+        
+        .card { 
+            background: white; padding: 40px 30px; border-radius: 20px; 
+            box-shadow: 0 15px 45px rgba(0,0,0,0.03); margin-bottom: 30px; 
+            border: 1px solid rgba(179, 142, 68, 0.1); position: relative;
+        }
+        .card h3 { letter-spacing: 2px; text-transform: uppercase; font-size: 1.1rem; margin-bottom: 15px; color: var(--gold); }
+
+        .ustadz-info { 
+            color: var(--gold); font-weight: 600; margin: 20px 0; font-size: 1rem; 
+            border-top: 1px double #eee; border-bottom: 1px double #eee; padding: 15px 0; 
+        }
+        
+        .maps-container {
+            position: relative; overflow: hidden; width: 100%; padding-top: 56.25%; 
+            border-radius: 15px; margin-top: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        .maps-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        
+        .btn-maps { 
+            display: inline-block; padding: 14px 30px; background: #25d366; color: white; 
+            text-decoration: none; border-radius: 30px; margin-top: 20px; font-weight: 600;
+            transition: 0.3s; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2);
+        }
+
+        .timer { display: flex; justify-content: center; gap: 15px; margin: 40px 0; }
+        .timer div { 
+            background: white; color: var(--gold); padding: 15px; border-radius: 12px; 
+            min-width: 80px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-bottom: 3px solid var(--gold);
+        }
+        .timer span { font-size: 1.5rem; font-weight: 700; }
+        
+        #music-btn { 
+            position: fixed; bottom: 30px; right: 30px; z-index: 1000; 
+            background: var(--gold); border: none; width: 55px; height: 55px; 
+            border-radius: 50%; color: white; cursor: pointer; font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+        .sakura { 
+            position: fixed; top: -10%; z-index: 9998; pointer-events: none; 
+            animation: fall linear infinite;
+            background-image: url('https://www.transparentpng.com/download/flower/rose-petal-free-download-transparent-3.png');
+            background-size: contain; background-repeat: no-repeat;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        .gift-card { 
+            background: white; padding: 35px 25px; border-radius: 20px; 
+            margin: 25px auto; max-width: 420px; border: 1px dashed var(--gold);
+            transition: 0.3s;
+        }
+        .btn-copy { 
+            padding: 10px 20px; background: var(--bg); border: 1px solid var(--gold); 
+            border-radius: 8px; cursor: pointer; margin-top: 15px; font-weight: 600; color: var(--gold);
+            transition: 0.3s;
+        }
+        .btn-copy:hover { background: var(--gold); color: white; }
+
+        /* STYLE FITUR WISHES */
+        .wishes-box { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); margin-top: 30px; text-align: left; }
+        .wishes-box input, .wishes-box textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 10px; font-family: 'Montserrat', sans-serif; }
+        .btn-wish { background: var(--gold); color: white; border: none; padding: 12px 25px; border-radius: 10px; cursor: pointer; font-weight: 600; width: 100%; }
+        #wishes-display { margin-top: 30px; max-height: 400px; overflow-y: auto; padding-right: 5px; }
+        .wish-item { background: #f9f7f2; padding: 15px; border-radius: 12px; margin-bottom: 15px; border-left: 5px solid var(--gold); }
+        .wish-item b { color: var(--gold); font-size: 1.1rem; display: block; margin-bottom: 5px; }
+        .wish-item p { font-size: 0.95rem; color: #555; margin: 0; }
+
+        footer { padding: 100px 20px; background: #f9f7f2; text-align: center; border-top: 1px solid #eee; }
+
+        /* --- PERBAIKAN RESPONSIVE NAMA (MOBILE) --- */
+        @media (max-width: 480px) {
+            .mempelai-box h3 {
+                font-size: 1.85rem; /* Ukuran optimal agar nama panjang tetap 1 baris */
+                letter-spacing: -0.5px; /* Sedikit merapatkan huruf */
+            }
+            .c-name {
+                font-size: 3.2rem; 
+            }
+            .mempelai-box p {
+                font-size: 0.85rem;
+            }
+            .timer div {
+                min-width: 70px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="mySong" loop preload="auto">
+        <source src="assets/nasheed.mp3.mp4" type="audio/mpeg">
+    </audio>
+    <button id="music-btn" onclick="toggleMusic()"><i class="fas fa-music"></i></button>
+
+    <div id="cover">
+        <p data-aos="fade-up" data-aos-duration="1000" style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.8rem;">The Wedding Of</p>
+        <h1 class="c-name" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="300">Laili & Yunus</h1>
+        <div style="background: white; padding: 25px 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);" data-aos="fade-up" data-aos-delay="600">
+            <p style="font-size: 0.9rem; margin-bottom: 5px;">Kepada Bapak/Ibu/Saudara/i:</p>
+            <h2 id="guest-name" style="color: var(--gold); font-size: 1.5rem;">Nama Tamu</h2>
+        </div>
+        <button class="btn-open" onclick="openInvitation()" data-aos="fade-up" data-aos-delay="900">BUKA UNDANGAN</button>
+    </div>
+
+    <div id="main-content">
+        <section>
+            <p class="arabic" data-aos="fade-up">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+            <p data-aos="fade-up" data-aos-delay="200" style="font-weight: 600; letter-spacing: 1px;">Assalamu'alaikum Warahmatullahi Wabarakatuh</p>
+            
+            <div style="margin: 50px 0; padding: 30px; border-radius: 20px; position: relative;" data-aos="zoom-in">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 1px solid var(--gold); opacity: 0.2; border-radius: 20px;"></div>
+                <p class="arabic" style="font-size: 1.6rem; line-height: 2.5;">وَمِنْ ءَايَٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّن| أَنفُسِكُمْ أَزْوَٰجًا lِّتَسْكُنُوٓا۟ إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِى ذَٰلِكَ لَءَايَٰتٍ lِّقَوْمٍ يَتَفَكَّرُونَ</p>
+                <p style="font-size: 0.95rem; font-style: italic; margin-top: 20px; color: #555;">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang."<br><b>(QS. Ar-Rum: 21)</b></p>
+            </div>
+
+            <p data-aos="fade-up" style="margin-bottom: 50px;">Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala, kami mengundang Bapak/Ibu/Saudara/i untuk hadir di acara pernikahan kami:</p>
+            
+            <div class="mempelai-box">
+                <img src="assets/fotolaili.jpeg" class="mempelai-img" data-aos="fade-right">
+                <h3 data-aos="fade-left">Laili Hisanah</h3>
+                <p data-aos="fade-up">Anak Bungsu dari Bapak <b>Sunarya</b> & Ibu <b>Suaida</b></p>
+            </div>
+
+            <h2 class="c-name" style="font-size: 2.5rem; margin: 30px 0;" data-aos="zoom-in">&</h2>
+
+            <div class="mempelai-box">
+                <img src="assets/fotoyunus.jpeg" class="mempelai-img" data-aos="fade-left">
+                <h3 data-aos="fade-right">Muhammad Yunus Al-Anshory</h3>
+                <p data-aos="fade-up">Anak ketiga dari Bapak <b>Ruslani Anshorullah</b> & Ibu <b>Marsilah</b></p>
+            </div>
+        </section>
+
+        <section style="background: #f4f1ea;">
+            <h2 class="c-name" data-aos="fade-down" style="font-size: 3rem;">Waktu & Lokasi</h2>
+            
+            <div class="timer">
+                <div data-aos="flip-left" data-aos-delay="100"><span id="d">0</span><br>Hari</div>
+                <div data-aos="flip-left" data-aos-delay="200"><span id="h">0</span><br>Jam</div>
+                <div data-aos="flip-left" data-aos-delay="300"><span id="m">0</span><br>Menit</div>
+                <div data-aos="flip-left" data-aos-delay="400"><span id="s">0</span><br>Detik</div>
+            </div>
+
+            <div class="card" data-aos="fade-up">
+                <i class="fas fa-heart" style="color: var(--gold); font-size: 1.5rem; margin-bottom: 15px;"></i>
+                <h3>Akad Nikah</h3>
+                <p style="font-weight: 600;">Minggu, 12 April 2026</p>
+                <p>Pukul <b>09.00 WIB</b></p>
+                <div class="ustadz-info">
+                    <i class="fas fa-book-open"></i> Jam 09.30: Kajian Pernikahan<br>
+                    Bersama Ust. Irfan Taju Salathin, M.Pd
+                </div>
+                <p style="font-size: 0.9rem;">Jl. Teuku Cikditiro Gg Mawar 1 Sumberrejo Kemiling
+                    (Di Kediaman Mempelai Wanita) </p>
+            </div>
+
+            <div class="card" data-aos="fade-up">
+                <i class="fas fa-utensils" style="color: var(--gold); font-size: 1.5rem; margin-bottom: 15px;"></i>
+                <h3>Resepsi</h3>
+                <p style="font-weight: 600;">Minggu, 12 April 2026</p>
+                <p>Pukul <b>10.00 - Selesai WIB</b></p>
+                <p style="font-size: 0.9rem; margin-top: 10px;">Jl. Teuku Cikditiro Gg Mawar 1 Sumberrejo Kemiling</p>
+                
+                <div class="maps-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.1541301905377!2d105.21192937315472!3d-5.3934703539046565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40d076a6949253%3A0x40599ea59ae45114!2sGg.%20Mawar%201%2C%20Sumber%20Rejo%2C%20Kec.%20Kemiling%2C%20Kota%20Bandar%20Lampung%2C%20Lampung!5e0!3m2!1sid!2sid!4v1773037446036!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                
+                <a href="https://maps.app.goo.gl/3vQ7EtTcrKZyfaBu7" target="_blank" class="btn-maps">
+                    <i class="fas fa-map-marker-alt"></i> Petunjuk Lokasi
+                </a>
+            </div>
+        </section>
+
+        <section data-aos="fade-up">
+            <h2 class="c-name" style="font-size: 3rem;">Wedding Gift</h2>
+            <p style="margin-bottom: 30px;">Doa restu Anda adalah karunia terindah bagi kami. Namun jika ingin memberikan tanda kasih, dapat melalui:</p>
+            
+            <div class="gift-card" data-aos="zoom-in">
+                <span style="font-weight: 800; color: #00529c; font-size: 1.5rem; letter-spacing: 1px;">BRI</span><br>
+                <span id="norek1" style="font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 1px;">806401028660539</span>
+                <p style="margin-top: 5px;">A.n Muhammad Yunus Al-Anshory</p>
+                <button class="btn-copy" onclick="copyText('norek1')"><i class="far fa-copy"></i> Salin Nomor Rekening</button>
+            </div>
+            
+            <div class="gift-card" data-aos="zoom-in">
+                 <span style="font-weight: 700; color: #00a39d; font-size: 1.2rem;">BSI</span><br>
+                 <span id="norek2" style="font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 1px;">7343505765</span>
+                 <p style="margin-top: 5px;">A.n Muhammad Yunus Al anshory</p>
+                 <button class="btn-copy" onclick="copyText('norek2')"><i class="far fa-copy"></i> Salin Nomor Rekening</button>
+                </div>
+            
+            <div class="gift-card" data-aos="zoom-in">
+                <span style="font-weight: 800; color: #118eea; font-size: 1.3rem; letter-spacing: 1px;">DANA</span><br>
+                <span id="norek3" style="font-weight: 700; font-size: 1.4rem; color: var(--gold); letter-spacing: 1px;">082269449731</span>
+                <p style="margin-top: 5px;">A.n Laili Hisanah</p>
+                 <button class="btn-copy" onclick="copyText('norek3')"><i class="far fa-copy"></i> Salin Nomor DANA</button>
+            </div>
+
+        </section>
+
+        <section data-aos="fade-up">
+            <div style="margin-bottom: 50px; padding: 20px;">
+                <p class="arabic" style="font-size: 1.8rem;">بَارَكَ اللهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p>
+                <p style="font-style: italic; color: #555;">"Semoga Allah memberkahimu di waktu bahagia dan memberkahimu di waktu susah, serta semoga Allah menyatukan kalian berdua dalam kebaikan."</p>
+                <p style="font-size: 0.8rem; font-weight: 600; margin-top: 10px;">(HR. Abu Daud no. 2130, dishahihkan Al Albani dalam Shahih Abu Daud)</p>
+            </div>
+
+            <div style="margin-top: 60px;">
+                <p style="margin-bottom: 15px;">Tanda Terima Kasih,</p>
+                <p style="font-weight: 600; font-size: 1.1rem; margin-bottom: 30px;">Kami yang berbahagia,<br>Laili & Yunus</p>
+                
+                <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; font-size: 0.9rem;">
+                    <div>
+                        <p style="text-decoration: underline;">Keluarga Besar </p>
+                        <p>Bapak Sunarya</p>
+                        <p>& Ibu Suaida</p>
+                    </div>
+                    <div>
+                        <p style="text-decoration: underline;">Keluarga Besar </p>
+                        <p>Bapak Ruslani Anshorullah</p>
+                        <p>& Ibu Marsilah</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section data-aos="fade-up">
+            <h2 class="c-name" style="font-size: 3rem;">Wishes</h2>
+            <div class="wishes-box">
+                <input type="text" id="nameInput" placeholder="Nama Anda" required>
+                <textarea id="wishInput" rows="4" placeholder="Tulis ucapan & doa..." required></textarea>
+                <button class="btn-wish" onclick="sendWish()">Kirim Ucapan</button>
+                <div id="wishes-display"></div>
+            </div>
+        </section>
+
+        <section style="padding-bottom: 120px;">
+            <h2 class="c-name" style="font-size: 2.5rem;">Terima Kasih</h2>
+            <p data-aos="fade-up">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kami.</p>
+            <br>
+            <a id="wa-link" href="#" target="_blank" class="btn-maps" style="background: #25d366;">
+                <i class="fab fa-whatsapp"></i> Konfirmasi Kehadiran
+            </a>
+        </section>
+
+        <footer>
+            <p style="letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 10px;">THE WEDDING OF</p>
+            <h3 class="c-name" style="font-size: 2.5rem;">Laili & Yunus</h3>
+            <p style="margin-top: 40px; opacity: 0.6; font-size: 0.8rem; font-weight: 600;">Design with Love by Laili dan Yunus</p>
+            <p style="opacity: 0.4; font-size: 0.7rem;">© 2026 Digital Invitation</p>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: false, mirror: true });
+
+        function openInvitation() {
+            document.getElementById('cover').classList.add('hidden');
+            document.getElementById('main-content').style.display = 'block';
+            const song = document.getElementById('mySong');
+            song.play().catch(e => console.log("Musik tertunda"));
+            setTimeout(() => { 
+                AOS.refresh(); 
+                createSakura(); 
+                loadWishes();
+            }, 100);
+        }
+
+        // Mengambil parameter 'to' dari URL
+const urlParams = new URLSearchParams(window.location.search);
+let guestName = urlParams.get('to');
+
+// Jika ada parameter 'to', tampilkan namanya. Jika tidak, gunakan default.
+if (guestName) {
+    // decodeURIComponent berfungsi mengubah %20 menjadi spasi kembali
+    document.getElementById('guest-name').innerText = decodeURIComponent(guestName);
+} else {
+    document.getElementById('guest-name').innerText = "Bapak/Ibu/Saudara/i";
+}
+
+        const waMessage = `Assalamu'alaikum Warahmatullahi Wabarakatuh\n\nTanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i, untuk menghadiri acara pernikahan kami (Laili & Yunus).\n\nInfo lengkap: ${window.location.href}\n\nTerima Kasih.`;
+        document.getElementById('wa-link').href = `https://wa.me/6282127269772?text=${encodeURIComponent(waMessage)}`;
+
+        function toggleMusic() {
+            const song = document.getElementById('mySong');
+            song.paused ? song.play() : song.pause();
+        }
+
+        function createSakura() {
+            setInterval(() => {
+                const leaf = document.createElement('div');
+                leaf.className = 'sakura';
+                leaf.style.left = Math.random() * 100 + 'vw';
+                leaf.style.width = Math.random() * 10 + 10 + 'px';
+                leaf.style.height = leaf.style.width;
+                leaf.style.animationDuration = Math.random() * 3 + 5 + 's';
+                document.body.appendChild(leaf);
+                setTimeout(() => leaf.remove(), 8000);
+            }, 500);
+        }
+
+        const target = new Date("April 12, 2026 09:00:00").getTime();
+        setInterval(() => {
+            const gap = target - new Date().getTime();
+            if (gap > 0) {
+                document.getElementById('d').innerText = Math.floor(gap / (1000 * 60 * 60 * 24));
+                document.getElementById('h').innerText = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById('m').innerText = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById('s').innerText = Math.floor((gap % (1000 * 60)) / 1000);
+            }
+        }, 1000);
+
+        function copyText(id) {
+            navigator.clipboard.writeText(document.getElementById(id).innerText).then(() => {
+                alert("Nomor rekening berhasil disalin!");
+            });
+        }
+
+        function sendWish() {
+            const name = document.getElementById('nameInput').value;
+            const wish = document.getElementById('wishInput').value;
+            if (name === "" || wish === "") {
+                alert("Mohon isi nama dan ucapan Anda.");
+                return;
+            }
+            const newWish = { name: name, text: wish };
+            let wishes = JSON.parse(localStorage.getItem('wedding_wishes')) || [];
+            wishes.unshift(newWish);
+            localStorage.setItem('wedding_wishes', JSON.stringify(wishes));
+            document.getElementById('nameInput').value = "";
+            document.getElementById('wishInput').value = "";
+            loadWishes();
+        }
+
+        function loadWishes() {
+            const display = document.getElementById('wishes-display');
+            let wishes = JSON.parse(localStorage.getItem('wedding_wishes')) || [];
+            display.innerHTML = "";
+            wishes.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'wish-item';
+                div.innerHTML = `<b>${item.name}</b><p>${item.text}</p>`;
+                display.appendChild(div);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -54,7 +54,7 @@ class LocalDataSource {
         BankDetails(bank: "BANK MANDIRI", name: "MOH. JIHAD", number: "210002114"),
         BankDetails(bank: "BANK MANDIRI", name: "SISSY HISANAH", number: "210002136"),
       ],
-      giftAddress: "Jl. Teuku Cikditiro Gg Mawar 1 Sumberrejo Kemiling",
+      giftAddress: " Majsid MHT JL. Damai RT 03 RW 05, Petukangan Selatan, Pesanggrahan, Jakarta Selatan",
       giftReceiver: "Sissy Hisanah",
       dummyWishes: [
         Wish(name: "Aku", date: "24 Oktober 2025 | 10:07", message: "Selamat menempuh hidup baru ya!"),

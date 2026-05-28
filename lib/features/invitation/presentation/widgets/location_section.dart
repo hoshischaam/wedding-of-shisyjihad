@@ -69,7 +69,7 @@ class _LocationSectionState extends State<LocationSection> {
                     "Minggu",
                     "12 April 2026",
                     "09.00 WIB",
-                    "Jl. Teuku Cikditiro Gg Mawar 1 Sumberrejo Kemiling\n(Di Kediaman Mempelai Wanita)",
+                    "Majsid MHT JL. Damai RT 03 RW 05, Petukangan Selatan, Pesanggrahan, Jakarta Selatan",
                     invitation.mapsUrl,
                     0
                   ),
@@ -79,7 +79,7 @@ class _LocationSectionState extends State<LocationSection> {
                     "Minggu",
                     "12 April 2026",
                     "10.00 - Selesai WIB",
-                    "Jl. Teuku Cikditiro Gg Mawar 1 Sumberrejo Kemiling",
+                    "Majsid MHT JL. Damai RT 03 RW 05, Petukangan Selatan, Pesanggrahan, Jakarta Selatan",
                     invitation.mapsUrl,
                     200
                   ),

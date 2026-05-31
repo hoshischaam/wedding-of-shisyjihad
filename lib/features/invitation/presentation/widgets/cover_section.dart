@@ -52,9 +52,9 @@ class CoverSection extends StatelessWidget {
               
               Text(
                 "${invitation.groomName} & ${invitation.brideName}",
-                style: AppStyles.scriptStyle.copyWith(
+                style: AppStyles.coverNameStyle.copyWith(
                   color: Colors.white,
-                  fontSize: 64,
+                  fontSize: 44,
                 ),
                 textAlign: TextAlign.center,
               ).animate().fadeIn(delay: 400.ms, duration: 800.ms).scale(),

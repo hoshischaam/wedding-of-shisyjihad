@@ -11,6 +11,14 @@ class AppStyles {
         fontWeight: FontWeight.w600,
       );
 
+  // Majestic Serif font for names on the cover (Cinzel)
+  static TextStyle get coverNameStyle => GoogleFonts.cinzel(
+        color: AppColors.accent,
+        fontSize: 48,
+        fontWeight: FontWeight.w600,
+        letterSpacing: 2.0,
+      );
+
   // Montserrat for headings
   static TextStyle get headingStyle => GoogleFonts.montserrat(
         color: AppColors.primaryText,

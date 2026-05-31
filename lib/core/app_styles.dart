@@ -3,10 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
 class AppStyles {
-  // Script font for names
-  static TextStyle get scriptStyle => GoogleFonts.greatVibes(
+  // Elegant Serif font for names (replacing curly Great Vibes)
+  static TextStyle get scriptStyle => GoogleFonts.cormorantGaramond(
         color: AppColors.accent,
         fontSize: 48,
+        fontStyle: FontStyle.italic,
+        fontWeight: FontWeight.w600,
       );
 
   // Montserrat for headings

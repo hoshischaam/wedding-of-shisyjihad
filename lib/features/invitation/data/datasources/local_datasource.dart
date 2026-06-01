@@ -51,8 +51,8 @@ class LocalDataSource {
         )
       ],
       banks: [
-        BankDetails(bank: "BANK MANDIRI", name: "Muhammad JIHAD", number: "210002114"),
-        BankDetails(bank: "BANK MANDIRI", name: "Syahshiyah Safa", number: "210002136"),
+        BankDetails(bank: "BANK BCA", name: "Syahshiyah Safa", number: "4760201966"),
+        BankDetails(bank: "BANK BSI", name: "Muhammad Jihad", number: "7152177938"),
       ],
       giftAddress: " Majsid MHT JL. Damai RT 03 RW 05, Petukangan Selatan, Pesanggrahan, Jakarta Selatan",
       giftReceiver: "Shisy",

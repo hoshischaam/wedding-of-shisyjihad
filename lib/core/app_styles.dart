@@ -3,20 +3,20 @@ import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
 class AppStyles {
-  // Elegant Serif font for names (replacing curly Great Vibes)
-  static TextStyle get scriptStyle => GoogleFonts.cormorantGaramond(
+  // Darwin Smith custom font for names on inner pages
+  static TextStyle get scriptStyle => const TextStyle(
+        fontFamily: 'DarwinSmith',
         color: AppColors.accent,
         fontSize: 48,
-        fontStyle: FontStyle.italic,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w400,
       );
 
-  // Majestic Serif font for names on the cover (Cinzel)
-  static TextStyle get coverNameStyle => GoogleFonts.cinzel(
+  // Darwin Smith custom font for cover page names
+  static TextStyle get coverNameStyle => const TextStyle(
+        fontFamily: 'DarwinSmith',
         color: AppColors.accent,
-        fontSize: 48,
-        fontWeight: FontWeight.w600,
-        letterSpacing: 2.0,
+        fontSize: 64,
+        fontWeight: FontWeight.w400,
       );
 
   // Montserrat for headings

@@ -65,24 +65,16 @@ class _LocationSectionState extends State<LocationSection> {
                   const SizedBox(height: 40),
                   
                   _buildEventCard(
-                    "Akad Nikah",
+                    "Akad & Resepsi",
                     "Minggu",
-                    "12 Desember 2026",
-                    "09.00 WIB",
-                    "Masjid Nurim Srengseng",
+                    "11 Juli 2026",
+                    "10.00 - 14.00 WIB",
+                    "Masjid Nurul Iman Srengseng\nJl. Raya Pos Pengumben No.21 RT 10/03 Srengseng, Kec. Kembangan, Jakarta Barat",
                     invitation.mapsUrl,
                     0
                   ),
                   
-                  _buildEventCard(
-                    "Resepsi",
-                    "Minggu",
-                    "12 Desember 2026",
-                    "10.00 - Selesai WIB",
-                    "Kediaman Mempelai Wanita\nJl. Teuku Cikditiro Gg Mawar 1 Sumberrejo Kemiling",
-                    invitation.mapsUrl,
-                    200
-                  ),
+               
                   
                   const SizedBox(height: 30),
                   

@@ -20,8 +20,8 @@ class CoverSection extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.background,
-        image: DecorationImage(
-          image: NetworkImage(invitation.dummyCoverUrl),
+        image: const DecorationImage(
+          image: AssetImage('assets/gambar/cover_awal.jpg'),
           fit: BoxFit.cover,
         ),
       ),

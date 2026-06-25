@@ -59,7 +59,7 @@ class _BrideGroomSectionState extends State<BrideGroomSection> {
                   
                   _buildPersonInfo(
                     invitation.brideFullName,
-                    "Anak Sulung dari Bapak Lukam & Ibu Diah",
+                    "Anak Sulung dari Bapak Lukman Sidik & Ibu Diah Sadiah",
                     "assets/gambar/CEWE.png",
                     0,
                     true, // bride
@@ -123,9 +123,10 @@ class _BrideGroomSectionState extends State<BrideGroomSection> {
         
         Text(
           name,
-          style: AppStyles.scriptStyle.copyWith(
-            fontSize: 34,
+          style: AppStyles.headingStyle.copyWith(
+            fontSize: 22,
             fontWeight: FontWeight.bold,
+            color: AppColors.accent,
           ),
           textAlign: TextAlign.center,
         ).animate().fadeIn(delay: (delay + 200).ms).slideX(begin: isBride ? -0.2 : 0.2),

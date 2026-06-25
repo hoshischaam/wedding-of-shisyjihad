@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
 class AppStyles {
-  // Darwin Smith custom font for names on inner pages
+  // DarwinSmith custom font for names on inner pages
   static TextStyle get scriptStyle => const TextStyle(
         fontFamily: 'DarwinSmith',
         color: AppColors.accent,
@@ -11,7 +11,7 @@ class AppStyles {
         fontWeight: FontWeight.w400,
       );
 
-  // Darwin Smith custom font for cover page names
+  // DarwinSmith custom font for cover page names
   static TextStyle get coverNameStyle => const TextStyle(
         fontFamily: 'DarwinSmith',
         color: AppColors.accent,

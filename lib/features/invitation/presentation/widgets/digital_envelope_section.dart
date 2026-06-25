@@ -70,7 +70,20 @@ class _DigitalEnvelopeSectionState extends State<DigitalEnvelopeSection> {
                           ),
                           child: Column(
                             children: [
-                              const Icon(Icons.credit_card, color: AppColors.accent, size: 30),
+                              if (bank.bank.toUpperCase().contains('BCA'))
+                                Image.asset(
+                                  'assets/gambar/logo_bca.png',
+                                  height: 40,
+                                  fit: BoxFit.contain,
+                                )
+                              else if (bank.bank.toUpperCase().contains('BSI'))
+                                Image.asset(
+                                  'assets/gambar/logo_bsi.png',
+                                  height: 40,
+                                  fit: BoxFit.contain,
+                                )
+                              else
+                                const Icon(Icons.credit_card, color: AppColors.accent, size: 30),
                               const SizedBox(height: 15),
                               Text(
                                 bank.bank,

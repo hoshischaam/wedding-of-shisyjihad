@@ -9,12 +9,12 @@ class LocalDataSource {
       brideName: "Shisy",
       groomFullName: "Muhammad Jihad",
       brideFullName: "Syahshiyah Safa",
-      eventDate: "Minggu, 12 Desember 2026",
+      eventDate: "Sabtu, 11 Juli 2026",
       akadTime: "09:00 - 10:00 WIB",
       resepsiTime: "10:00 - Selesai WIB",
       locationName: "Kediaman Mempelai Wanita",
       locationAddress: "Jl. Teuku Cikditiro Gg Mawar 1 Sumberrejo Kemiling",
-      mapsUrl: "https://maps.google.com/?q=-5.3971,105.2663",
+      mapsUrl: "https://maps.app.goo.gl/pJYzTuLCAQugRkdK9",
       dummyCoverUrl: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
       groomPhotoUrl: "https://images.unsplash.com/photo-1549473448-5d7196c91f48?auto=format&fit=crop&w=400&q=80",
       bridePhotoUrl: "https://images.unsplash.com/photo-1534008897995-27a23e859048?auto=format&fit=crop&w=400&q=80",
@@ -26,7 +26,7 @@ class LocalDataSource {
         "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80",
         "https://images.unsplash.com/photo-1509927083803-4bd519298ac4?auto=format&fit=crop&w=600&q=80",
       ],
-      targetDate: DateTime(2026, 12, 12, 9, 0, 0),
+      targetDate: DateTime(2026, 07, 11, 10, 0, 0),
       youtubeVideoId: "R2QGZijERtw",
       protocols: [
         ProtocolItem(icon: Icons.masks, text: "Memakai Masker"),
@@ -54,7 +54,7 @@ class LocalDataSource {
         BankDetails(bank: "BANK BCA", name: "Syahshiyah Safa", number: "4760201966"),
         BankDetails(bank: "BANK BSI", name: "Muhammad Jihad", number: "7152177938"),
       ],
-      giftAddress: " Majsid MHT JL. Damai RT 03 RW 05, Petukangan Selatan, Pesanggrahan, Jakarta Selatan",
+      giftAddress: " Jalan M. Jani no. 29C RT. 06 RW. 03, Petukangan Utara, Pesanggrahan Jakarta Selatan",
       giftReceiver: "Shisy",
       dummyWishes: [
         Wish(name: "Aku", date: "24 Oktober 2025 | 10:07", message: "Selamat menempuh hidup baru ya!"),
@@ -62,8 +62,8 @@ class LocalDataSource {
         Wish(name: "Trisna Puji", date: "10 Februari 2022 | 00:00", message: "Selamat menempuh hidup baru ya bestieeee"),
         Wish(name: "Adji Sukmana", date: "10 Februari 2022 | 01:00", message: "Selamat ya kak semoga samawa"),
       ],
-      venueLatitude: -6.21462,
-      venueLongitude: 106.80232,
+      venueLatitude: -6.2170603,
+      venueLongitude: 106.7618125,
     );
   }
 }

@@ -25,6 +25,11 @@ class Invitation {
   final List<Wish> dummyWishes;
   final double venueLatitude;
   final double venueLongitude;
+  final String parkingName;
+  final String parkingAddress;
+  final String parkingMapsUrl;
+  final double parkingLatitude;
+  final double parkingLongitude;
 
   Invitation({
     required this.groomName,
@@ -51,6 +56,11 @@ class Invitation {
     required this.dummyWishes,
     required this.venueLatitude,
     required this.venueLongitude,
+    required this.parkingName,
+    required this.parkingAddress,
+    required this.parkingMapsUrl,
+    required this.parkingLatitude,
+    required this.parkingLongitude,
   });
 }
 

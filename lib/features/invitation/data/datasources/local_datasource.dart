@@ -64,6 +64,11 @@ class LocalDataSource {
       ],
       venueLatitude: -6.2170603,
       venueLongitude: 106.7618125,
+      parkingName: "Brimbun Raya Indah, Pt",
+      parkingAddress: "Jl. Raya Pos Pengumben No. 10-A 8, RT 8/RW 3, Srengseng, Kec. Kebon Jeruk, Kota Jakarta Barat",
+      parkingMapsUrl: "https://maps.google.com/?q=Brimbun+Raya+Indah,+Pt+Jl.+Raya+Pos+Pengumben+No.10-A+8,+RT.8/RW.3,+Srengseng,+Kec.+Kb.+Jeruk,+Kota+Jakarta+Barat",
+      parkingLatitude: -6.2175625,
+      parkingLongitude: 106.7616875,
     );
   }
 }

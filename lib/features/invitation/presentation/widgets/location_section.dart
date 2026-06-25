@@ -136,6 +136,144 @@ class _LocationSectionState extends State<LocationSection> {
                       textStyle: const TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1.5),
                     ),
                   ).animate().fadeIn(delay: 700.ms),
+                  
+                  const SizedBox(height: 30),
+                  
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 25),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.02),
+                          blurRadius: 30,
+                          offset: const Offset(0, 10),
+                        )
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.local_parking_rounded,
+                              color: AppColors.accent,
+                              size: 24,
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              "LOKASI PARKIR",
+                              style: AppStyles.headingStyle.copyWith(
+                                fontSize: 16,
+                                color: AppColors.accent,
+                                letterSpacing: 2.5,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Text(
+                          invitation.parkingName,
+                          style: AppStyles.bodyStyle.copyWith(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          invitation.parkingAddress,
+                          style: AppStyles.bodyStyle.copyWith(
+                            fontSize: 14,
+                            height: 1.6,
+                            color: Colors.grey[700],
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 25),
+                        Container(
+                          height: 350,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.05),
+                                blurRadius: 20,
+                                offset: const Offset(0, 10),
+                              ),
+                            ],
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: FlutterMap(
+                              options: MapOptions(
+                                initialCenter: LatLng(invitation.parkingLatitude, invitation.parkingLongitude),
+                                initialZoom: 16.0,
+                              ),
+                              children: [
+                                TileLayer(
+                                  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                                  userAgentPackageName: 'com.example.app',
+                                ),
+                                MarkerLayer(
+                                  markers: [
+                                    Marker(
+                                      point: LatLng(invitation.parkingLatitude, invitation.parkingLongitude),
+                                      width: 80,
+                                      height: 80,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          shape: BoxShape.circle,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.black.withOpacity(0.15),
+                                              blurRadius: 8,
+                                              offset: const Offset(0, 4),
+                                            ),
+                                          ],
+                                          border: Border.all(
+                                            color: Colors.blue.shade700,
+                                            width: 2,
+                                          ),
+                                        ),
+                                        child: Icon(
+                                          Icons.local_parking_rounded,
+                                          color: Colors.blue.shade700,
+                                          size: 28,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 25),
+                        ElevatedButton.icon(
+                          onPressed: () => _openUrl(invitation.parkingMapsUrl),
+                          icon: const Icon(Icons.directions_car_outlined, size: 18),
+                          label: const Text("PETUNJUK LOKASI PARKIR"),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.accent.withOpacity(0.1),
+                            foregroundColor: AppColors.accent,
+                            elevation: 0,
+                            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 16),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              side: const BorderSide(color: AppColors.accent, width: 1.5),
+                            ),
+                            textStyle: const TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1.2),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ).animate().fadeIn(delay: 800.ms, duration: 800.ms).slideY(begin: 0.2),
                 ],
               ],
             ),

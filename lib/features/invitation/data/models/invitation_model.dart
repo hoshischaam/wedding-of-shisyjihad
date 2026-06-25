@@ -26,6 +26,11 @@ class InvitationModel extends Invitation {
     required super.dummyWishes,
     required super.venueLatitude,
     required super.venueLongitude,
+    required super.parkingName,
+    required super.parkingAddress,
+    required super.parkingMapsUrl,
+    required super.parkingLatitude,
+    required super.parkingLongitude,
   });
 
   // You can add fromJson/toJson here if you fetch from API in the future

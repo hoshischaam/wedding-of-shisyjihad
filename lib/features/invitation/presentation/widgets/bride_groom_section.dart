@@ -59,7 +59,7 @@ class _BrideGroomSectionState extends State<BrideGroomSection> {
                   
                   _buildPersonInfo(
                     invitation.brideFullName,
-                    "Anak Sulung dari Bapak Lukman Sidik & Ibu Diah Sadiah",
+                    "Putri Sulung dari Bapak Lukman Sidik & Ibu Diah Sadiah",
                     "assets/gambar/CEWE.png",
                     0,
                     true, // bride

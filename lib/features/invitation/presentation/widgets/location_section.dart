@@ -66,7 +66,7 @@ class _LocationSectionState extends State<LocationSection> {
                   
                   _buildEventCard(
                     "Akad & Resepsi",
-                    "Minggu",
+                    "Sabtu",
                     "11 Juli 2026",
                     "10.00 - 14.00 WIB",
                     "Masjid Nurul Iman Srengseng\nJl. Raya Pos Pengumben No.21 RT 10/03 Srengseng, Kec. Kembangan, Jakarta Barat",
